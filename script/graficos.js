@@ -1,4 +1,4 @@
-// graficos.js - Configuração e renderização dos gráficos
+
 
 let graficoVendas;
 let graficoPizza;
@@ -7,15 +7,15 @@ document.addEventListener('DOMContentLoaded', function() {
     inicializarGraficos();
 });
 
-// Inicializa todos os gráficos
+
 function inicializarGraficos() {
     carregarGraficoVendas();
     carregarGraficoUsuariosPorRegiao();
 }
 
-// Carrega e configura o gráfico de linha (vendas)
+
 function carregarGraficoVendas() {
-    // Dados de exemplo para o gráfico de vendas
+    
     const dadosVendas = {
         labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'],
         datasets: [
@@ -36,7 +36,7 @@ function carregarGraficoVendas() {
     
     const ctx = document.getElementById('graficoVendas').getContext('2d');
     
-    // Destruir gráfico anterior se existir
+    
     if (graficoVendas) {
         graficoVendas.destroy();
     }
@@ -83,9 +83,9 @@ function carregarGraficoVendas() {
     });
 }
 
-// Carrega e configura o gráfico de pizza (usuários por região)
+
 function carregarGraficoUsuariosPorRegiao() {
-    // Dados de exemplo para o gráfico de usuários
+    
     const dadosUsuarios = {
         labels: ['Norte', 'Nordeste', 'Centro-Oeste', 'Sudeste', 'Sul'],
         datasets: [{
@@ -103,7 +103,7 @@ function carregarGraficoUsuariosPorRegiao() {
     
     const ctx = document.getElementById('graficoPizza').getContext('2d');
     
-    // Destruir gráfico anterior se existir
+    
     if (graficoPizza) {
         graficoPizza.destroy();
     }
@@ -142,22 +142,22 @@ function carregarGraficoUsuariosPorRegiao() {
     });
 }
 
-// Função para mostrar mensagem de erro em um gráfico
+
 function mostrarErroGrafico(canvasId, mensagem) {
     const canvas = document.getElementById(canvasId);
     const ctx = canvas.getContext('2d');
     
-    // Limpar o canvas
+    
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
-    // Desenhar mensagem de erro
+    
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.font = '16px Arial';
     ctx.fillStyle = '#dc3545';
     ctx.fillText(mensagem, canvas.width / 2, canvas.height / 2);
     
-    // Ícone de erro (X)
+    
     ctx.beginPath();
     ctx.strokeStyle = '#dc3545';
     ctx.lineWidth = 2;
@@ -171,7 +171,7 @@ function mostrarErroGrafico(canvasId, mensagem) {
     ctx.stroke();
 }
 
-// Adicionar função para atualizar o gráfico ao trocar o período
+
 document.addEventListener('click', function(e) {
     if (e.target.closest('.filtrosGrafico')) {
         if (e.target.tagName === 'BUTTON') {
@@ -181,13 +181,13 @@ document.addEventListener('click', function(e) {
     }
 });
 
-// Função para simular atualização do gráfico por período
+
 function atualizarGraficoPorPeriodo(periodo) {
-    // Aqui você poderia fazer uma nova chamada à API com o período atualizado
-    // Para este exemplo, apenas simulamos uma atualização visual
+    
+    
     if (graficoVendas) {
         graficoVendas.data.datasets.forEach((dataset) => {
-            // Simular novos dados com base no período
+            
             const novosDados = Array.from({length: 6}, () => Math.floor(Math.random() * 100));
             dataset.data = novosDados;
         });
